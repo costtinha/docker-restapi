@@ -34,4 +34,17 @@ public class AuthorsService {
     public void deleteAuthorsById(int id) {
         repository.deleteById(id);
     }
+
+    public List<AuthorsDto> findAuthorsByName(String name) {
+        return repository.findAllByName(name).stream()
+                .map(mapper::toAuthorsDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<AuthorsDto> findAllAuthorsNamedQuery() {
+        return repository.findAllTest()
+                .stream()
+                .map(mapper::toAuthorsDto)
+                .collect(Collectors.toList());
+    }
 }

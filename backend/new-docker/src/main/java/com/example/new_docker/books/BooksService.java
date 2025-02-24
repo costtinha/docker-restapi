@@ -33,4 +33,11 @@ public class BooksService {
     public void deleteBookById(int id) {
         repository.deleteById(id);
     }
+
+    public List<BooksDto> findBooksByTitle(String title) {
+        return repository.findBooksByTitle(title)
+                .stream()
+                .map(mapper::toBooksDto)
+                .collect(Collectors.toList());
+    }
 }

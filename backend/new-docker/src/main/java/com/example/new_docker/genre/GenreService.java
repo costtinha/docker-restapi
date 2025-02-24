@@ -33,4 +33,10 @@ public class GenreService {
         repository.deleteById(id);
     }
 
+    public List<GenreDto> findGenreByName(String name) {
+        return repository.findGenreByName(name)
+                .stream()
+                .map(mapper::toGenreDto)
+                .collect(Collectors.toList());
+    }
 }
